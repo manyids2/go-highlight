@@ -3,6 +3,7 @@ module github.com/manyids2/go-highlight
 go 1.21.3
 
 require (
+	github.com/manyids2/go-tree-sitter-with-markdown v1.0.0
 	github.com/muesli/termenv v0.15.2
 	github.com/spf13/cobra v1.8.0
 )

@@ -118,9 +118,8 @@ func LoadHighlights(path string, useCterm bool) (Highlights, error) {
 	return highlights, nil
 }
 
-// String prints styles in a table
+// String prints styles with ansi
 func (h Highlights) Print() {
-	// p := termenv.ColorProfile()
 	for name, hi := range h {
 		fmt.Printf("%s\n", hi.Styled(name))
 	}
