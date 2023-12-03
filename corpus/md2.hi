@@ -1,0 +1,8 @@
+
+SpecialKey     xxx ctermfg=240 guifg=#585858
+EndOfBuffer    xxx ctermfg=240 guifg=#585858
+TermCursor     xxx cterm=reverse gui=reverse
+TermCursorNC   xxx cleared
+NonText        xxx ctermfg=240 guifg=#585858
+Directory      xxx cterm=bold ctermfg=109 gui=bold guifg=#87afaf
+ErrorMsg       xxx cterm=reverse ctermfg=167 ctermbg=234 gui=reverse guifg=#d75f5f guibg=#1c1c1c
