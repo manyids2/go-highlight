@@ -8,8 +8,8 @@ github.com/inconshreveable/mousetrap v1.1.0 h1:wN+x4NVGpMsO7ErUn/mUI3vEoE6Jt13X2
 github.com/inconshreveable/mousetrap v1.1.0/go.mod h1:vpF70FUmC8bwa3OWnCshd2FqLfsEA9PFc4w1p2J65bw=
 github.com/lucasb-eyer/go-colorful v1.2.0 h1:1nnpGOrhyZZuNyfu1QjKiUICQ74+3FNCN69Aj6K7nkY=
 github.com/lucasb-eyer/go-colorful v1.2.0/go.mod h1:R4dSotOR9KMtayYi1e77YzuveK+i7ruzyGqttikkLy0=
-github.com/manyids2/go-tree-sitter-with-markdown v1.0.0 h1:GdQapWXyspQquGb4KiP5W6DcAbfhQmWsGGrFaIzcRYo=
-github.com/manyids2/go-tree-sitter-with-markdown v1.0.0/go.mod h1:o7Nktz5kYEviFK9SQrdxUFEqa+eMCDYRdwdVyEr4qqw=
+github.com/manyids2/go-tree-sitter-with-markdown v1.0.1-0.20231130141122-0a158dec51bc h1:oCaXFsPHX7tQmKIAT7zKYyS40ulWekA+0OV8N0w33Kk=
+github.com/manyids2/go-tree-sitter-with-markdown v1.0.1-0.20231130141122-0a158dec51bc/go.mod h1:o7Nktz5kYEviFK9SQrdxUFEqa+eMCDYRdwdVyEr4qqw=
 github.com/mattn/go-isatty v0.0.18 h1:DOKFKCQ7FNG2L1rbrmstDN4QVRdS89Nkh85u68Uwp98=
 github.com/mattn/go-isatty v0.0.18/go.mod h1:W+V8PltTTMOvKvAeJH7IuucS94S2C6jfK/D7dTCTo3Y=
 github.com/mattn/go-runewidth v0.0.14 h1:+xnbZSEeDbOIg5/mE6JF0w6n9duR1l3/WmbinWVwUuU=

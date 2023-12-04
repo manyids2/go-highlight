@@ -5,7 +5,6 @@ import (
 	"log"
 	"os"
 
-	"github.com/manyids2/go-highlight/highlights"
 	"github.com/manyids2/go-highlight/syntax"
 	"github.com/spf13/cobra"
 )
@@ -16,26 +15,43 @@ var rootCmd = &cobra.Command{
 	Short: "neovim highlights for tcell",
 	Long:  `Print neovim highlights in terminal using tcell.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		// Parse path, cterm/gui
-		config, _ := cmd.Flags().GetString("config")
-		useCterm, _ := cmd.Flags().GetBool("use-cterm")
-
-		// Parse file and get highlights
-		h, err := highlights.LoadHighlights(config, useCterm)
-		if err != nil {
-			log.Fatalln("Could not parse highlights file: ", err)
-		}
-		h.Print()
+		// // Parse file and get highlights
+		// config, _ := cmd.Flags().GetString("config")
+		// useCterm, _ := cmd.Flags().GetBool("use-cterm")
+		// h, err := highlights.LoadHighlights(config, useCterm)
+		// if err != nil {
+		// 	log.Fatalln("Could not parse highlights file: ", err)
+		// }
+		// h.Print()
 
 		// Read and parse input file with tree-sitter
 		path, _ := cmd.Flags().GetString("path")
-		t, err := syntax.LoadTree(path)
+		s, err := syntax.LoadSyntax(path)
 		if err != nil {
 			log.Fatalln("Could not parse source file: ", err)
 		}
+		fmt.Println(s)
 
-		// Print
-		fmt.Println(t.RootNode())
+		// Queries
+		queriesDir, _ := cmd.Flags().GetString("queries")
+		queriesPath := queriesDir + "/" + s.Ext[1:] + "-highlights.scm"
+		queries, err := syntax.LoadQueries(queriesPath)
+		if err != nil {
+			log.Fatalln("Could not parse queries file: ", err)
+		}
+		fmt.Println(string(queries))
+
+		// 		// Custom query
+		// 		const opQuery = `
+		// (call_expression
+		//   function: (identifier) @function.call)
+		//
+		// (call_expression
+		//   function: (selector_expression
+		//     field: (field_identifier) @method.call))
+		// 		`
+		// 		fmt.Println(opQuery)
+		s.Query(queries)
 	},
 }
 
@@ -49,5 +65,6 @@ func Execute() {
 func init() {
 	rootCmd.Flags().StringP("path", "p", "./main.go", "Path to file.")
 	rootCmd.Flags().StringP("config", "c", "./corpus/md2.hi", "Path to highlights.")
+	rootCmd.Flags().StringP("queries", "q", "./queries", "Path to queries.")
 	rootCmd.Flags().Bool("use-cterm", false, "Use cterm colors instead of gui.")
 }

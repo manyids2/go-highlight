@@ -14,7 +14,18 @@ Proof of concept
 - [ ] divide by function ( tree-sitter, neovim, lang, etc. )
 - [ ] divide by theme ( light, dark, italics )
 
-Further
+
+Type of output we need
+Maybe in the scanner store array of lines? we do have start and end bytes though.
+
+```
+package_clause [0, 0] - [0, 14] @include /                                                                                                                        
+  package_identifier [0, 8] - [0, 14] @namespace /                                                                                                                
+import_declaration [2, 0] - [13, 1] @include /                                                                                                                    
+  import_spec_list [2, 7] - [13, 1] @punctuation.bracket /                                                                                                        
+    import_spec [3, 1] - [3, 10] @string /                                                                                                                        
+      path: interpreted_string_literal [3, 1] - [3, 10] @string /  
+```
 
 - tree-sitter queries and highlights
 - given file of language, highlights sheet
