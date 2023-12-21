@@ -30,28 +30,19 @@ var rootCmd = &cobra.Command{
 		if err != nil {
 			log.Fatalln("Could not parse source file: ", err)
 		}
-		fmt.Println(s)
+		// fmt.Println(s)
 
 		// Queries
 		queriesDir, _ := cmd.Flags().GetString("queries")
 		queriesPath := queriesDir + "/" + s.Ext[1:] + "-highlights.scm"
-		queries, err := syntax.LoadQueries(queriesPath)
+
+		q, err := syntax.LoadSyntax(queriesPath)
+		// queries, err := syntax.LoadQueries(queriesPath)
 		if err != nil {
 			log.Fatalln("Could not parse queries file: ", err)
 		}
-		fmt.Println(string(queries))
-
-		// 		// Custom query
-		// 		const opQuery = `
-		// (call_expression
-		//   function: (identifier) @function.call)
-		//
-		// (call_expression
-		//   function: (selector_expression
-		//     field: (field_identifier) @method.call))
-		// 		`
-		// 		fmt.Println(opQuery)
-		s.Query(queries)
+		fmt.Println(q.Root.String())
+		// s.Query(queries)
 	},
 }
 

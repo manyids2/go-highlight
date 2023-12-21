@@ -13,6 +13,7 @@ import (
 	"github.com/manyids2/go-tree-sitter-with-markdown/golang"
 	"github.com/manyids2/go-tree-sitter-with-markdown/javascript"
 	"github.com/manyids2/go-tree-sitter-with-markdown/markdown"
+	tsquery "github.com/manyids2/go-tree-sitter-with-markdown/query"
 )
 
 type Syntax struct {
@@ -45,6 +46,8 @@ func LoadSyntax(path string) (*Syntax, error) {
 	ext := filepath.Ext(path)
 	var lang *sitter.Language
 	switch ext {
+	case ".scm":
+		lang = tsquery.GetLanguage()
 	case ".go":
 		lang = golang.GetLanguage()
 	case ".js":
@@ -140,6 +143,9 @@ func (s *Syntax) Query(query []byte) {
 				"\nm.ID,                      ", m.ID,
 				"\nm.PatternIndex)            ", m.PatternIndex,
 				"\n", c.Node.String())
+
+			// m.ID -> global index over matches
+
 			count += 1
 		}
 	}
